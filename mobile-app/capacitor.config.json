@@ -1,0 +1,6 @@
+{
+  "appId": "com.medverify.app",
+  "appName": "MedVerify",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

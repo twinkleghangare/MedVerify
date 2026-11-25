@@ -1,0 +1,27 @@
+# Render.com Blueprint — free-tier deployment config.
+# Push this repo to GitHub, then on Render: New -> Blueprint -> pick this
+# repo. Render reads this file and provisions the service automatically.
+#
+# Free tier notes (be aware of these before relying on it):
+#   - The service spins down after ~15 minutes of no traffic; the next
+#     request then takes ~30-60s while it cold-starts back up.
+#   - 750 free instance-hours/month, shared across your free services.
+#   - 512MB RAM — this is exactly why Dockerfile.render drops TensorFlow.
+services:
+  - type: web
+    name: medverify-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile.render
+    dockerContext: ./backend
+    healthCheckPath: /health
+    envVars:
+      - key: MEDVERIFY_ENV
+        value: production
+      - key: MEDVERIFY_CORS_ORIGINS
+        # Update this to your actual deployed frontend URL once you know it
+        # (e.g. https://yourusername.github.io), or leave as * — safe here
+        # since this API uses no cookies/credentials, just tighter practice.
+        value: "*"
+      - key: MEDVERIFY_MAX_UPLOAD_MB
+        value: "8"

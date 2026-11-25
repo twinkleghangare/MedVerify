@@ -1,0 +1,25 @@
+# Deployment requirements for free-tier hosting (e.g. Render.com free web
+# service: 512MB RAM, limited build minutes).
+#
+# This is requirements.txt WITHOUT tensorflow. No trained .keras model files
+# ship with this project (see app/models/weights/), so TensorFlow is unused
+# dead weight right now — it adds ~2GB to the image and can exhaust a free
+# tier's RAM on its own just importing. The app already degrades gracefully
+# without it (see app/cnn_inference.py): database + OCR/QR verification work
+# fully, only the two optional CNN checks report "not available".
+#
+# If you later add real trained models, switch back to requirements.txt
+# (which includes tensorflow) and use a paid tier with enough RAM/build time.
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pandas==2.2.2
+numpy==1.26.4
+openpyxl==3.1.5
+Pillow==10.4.0
+opencv-python-headless==4.10.0.84
+pyzbar==0.1.9
+pytesseract==0.3.13
+python-dotenv==1.0.1
+slowapi==0.1.9
+groq==1.7.0

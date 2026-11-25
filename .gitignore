@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+backend/venv/
+
+# Environment / secrets
+.env
+*.env
+!.env.example
+
+# Runtime data
+backend/tmp_uploads/
+backend/app/models/weights/*.keras
+backend/app/models/weights/*.txt
+
+# Test / tooling
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+.agents/
+.gemini/
+.hallmark/
+skills-lock.json
+
+# Large unused source files (not read by any code — only Medicine_Details.csv
+# and Real_Medicines_dataset.xlsx are actually used, see app/config.py).
+# These are large enough to break GitHub's 100MB push limit.
+backend/data/medicine_data.csv
+backend/data/medicine_dataset.csv
+backend/data/medverify_database.json
+backend/data/Medicine_data/
+
+# Android app build artifacts (generated locally by npm install / Gradle —
+# never belong in version control, and Gradle's local build cache/output
+# folders can be very large).
+mobile-app/node_modules/
+mobile-app/android/app/build/
+mobile-app/android/build/
+mobile-app/android/.gradle/
+mobile-app/android/local.properties
+mobile-app/android/app/release/
+mobile-app/android/app/debug/
