@@ -1208,7 +1208,7 @@ button:active {
     </div>
     <div class="field-group">
       <label class="field-label" for="hostUrlInput">FastAPI Endpoint URL</label>
-      <input type="text" class="field-input" id="hostUrlInput" placeholder="http://localhost:8000">
+      <input type="text" class="field-input" id="hostUrlInput" placeholder="https://medverify-backend-vrhs.onrender.com">
     </div>
     <div class="modal-footer-btns">
       <button type="button" class="ghost-btn" onclick="saveHostConfig()">Save &amp; Reconnect</button>
@@ -1220,13 +1220,8 @@ button:active {
 
 <script>
 (() => {
-  const DEFAULT_API = (window.location.protocol === 'http:' || window.location.protocol === 'https:')
-    ? window.location.origin
-    : 'http://localhost:8000';
+  const DEFAULT_API = 'https://medverify-backend-vrhs.onrender.com';
   let API_BASE = localStorage.getItem('medverify_api_base') || DEFAULT_API;
-  if (API_BASE.includes('localhost:8000') && window.location.hostname && window.location.hostname !== 'localhost') {
-    API_BASE = window.location.origin;
-  }
 
   let currentMode = 'upload';
   let currentLang = 'en';
