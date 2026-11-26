@@ -1,0 +1,5 @@
+# Optional CNN / Deep Learning dependencies for MedVerify AI.
+# Install these only when trained .keras weights are placed in:
+#   backend/app/models/weights/
+# See backend/app/cnn_inference.py for graceful fallback behavior.
+tensorflow==2.17.0
